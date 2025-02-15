@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{2EFFB3DD-94F6-4451-AE69-3B461AE1E53F}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ControlDeRiesgoFinanciero.LN</RootNamespace>
+    <AssemblyName>ControlDeRiesgoFinanciero.LN</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ActividadFinanciera\Editar\EditarActividadFinancieraLN.cs" />
+    <Compile Include="ActividadFinanciera\Listar\ListarActividadFinancieraLN.cs" />
+    <Compile Include="ActividadFinanciera\ObtenerPorId\ObtenerActividadFinancieraPorIdLN.cs" />
+    <Compile Include="ActividadFinanciera\Registrar\RegistrarActividadFinancieraLN.cs" />
+    <Compile Include="ActividadPersona\Actualizar\ActualizarActividadPersonaLN.cs" />
+    <Compile Include="ActividadPersona\Eliminar\EliminarActividadPersonaLN.cs" />
+    <Compile Include="ActividadPersona\ListarActividadesNoRegistradas\ListarActividadesNoRegistradasLN.cs" />
+    <Compile Include="ActividadPersona\ListarPersonaPorId\ListarPersonaPorIdLN.cs" />
+    <Compile Include="ActividadPersona\Listar\ListarActividadPersonaLN.cs" />
+    <Compile Include="ActividadPersona\ObtenerPorId\ObtenerActividadPersonaPorIdLN.cs" />
+    <Compile Include="ActividadPersona\Registrar\RegistrarActividadPersonaLN.cs" />
+    <Compile Include="AnalizarPersona\Analizar\AnalizarPersonaLN.cs" />
+    <Compile Include="AnalizarPersona\ListarPorId\ListarPorIdLN.cs" />
+    <Compile Include="AnalizarPersona\Listar\ListarAnalisisPersonaLN.cs" />
+    <Compile Include="AnalizarPersona\Registrar\RegistrarAnalisisLN.cs" />
+    <Compile Include="ArchivoAnalisis\Detalles\DetallesArchivoAnalisisLN.cs" />
+    <Compile Include="ArchivoAnalisis\Listar\ListarArchivoAnalisisLN.cs" />
+    <Compile Include="ArchivoAnalisis\ObtenerPorId\ObtenerArchivoAnalisisPorIdLN.cs" />
+    <Compile Include="ArchivoAnalisis\Registrar\RegistrarArchivoAnalisisLN.cs" />
+    <Compile Include="BitacoraEventos\Registrar\RegistrarBitacoraEventosLN.cs" />
+    <Compile Include="BitacoraEventos\Listar\ListarBitacoraEventosLN.cs" />
+    <Compile Include="BitacoraEventos\ObtenerPorId\ObtenerBitacoraEventosLN.cs" />
+    <Compile Include="ActividadFinanciera\CambiarEstado\CambiarEstadoLN.cs" />
+    <Compile Include="General\Conversiones\ActividadFinanciera\ConvertirActividadFinancieraDtoAlActividadFinancieraTabla.cs" />
+    <Compile Include="General\Conversiones\ActividadPersona\ConvertirActividadPersonaDtoAActividadPersonaTabla.cs" />
+    <Compile Include="General\Conversiones\ArchivoAnalisis\ConvertirArchivoAnalisisDtoAArchivoAnalisisTabla.cs" />
+    <Compile Include="General\Conversiones\BitacoraEventos\ConvertirBitacoraDtoABitacoraTabla.cs" />
+    <Compile Include="General\Conversiones\PalabrasClave\ConvertirAPalabrasClaveDto.cs" />
+    <Compile Include="General\Conversiones\PalabrasClave\ConvertirAPalabrasClaveTabla.cs" />
+    <Compile Include="General\Conversiones\Personas\ConvertirAPersonasDto.cs" />
+    <Compile Include="General\Conversiones\Personas\ConvertirAPersonasTabla.cs" />
+    <Compile Include="General\Fecha.cs" />
+    <Compile Include="PalabrasClave\Editar\EditarPalabraClaveLN.cs" />
+    <Compile Include="PalabrasClave\Listar\ListarPalabraClaveLN.cs" />
+    <Compile Include="PalabrasClave\ObtenerPorId\ObtenerPalabraClavePorIdLN.cs" />
+    <Compile Include="PalabrasClave\Registrar\RegistrarPalabraClaveLN.cs" />
+    <Compile Include="Personas\CambiarEstado\CambiarEstadoPersonasLN.cs" />
+    <Compile Include="Personas\Editar\EditarPersonasLN.cs" />
+    <Compile Include="Personas\Listar\ListarPersonasLN.cs" />
+    <Compile Include="Personas\ObtenerPorId\ObtenerPersonasPorIdLN.cs" />
+    <Compile Include="Personas\Registrar\RegistrarPersonasLN.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ControlDeRiesgoFinanciero.Abstracciones\ControlDeRiesgoFinanciero.Abstracciones.csproj">
+      <Project>{8892645E-4256-4D4F-BBD8-DA2DFF35E0E4}</Project>
+      <Name>ControlDeRiesgoFinanciero.Abstracciones</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ControlDeRiesgoFinanciero.AccesoADatos\ControlDeRiesgoFinanciero.AccesoADatos.csproj">
+      <Project>{aecd6833-a833-4658-8c1c-3f7247cd3dcf}</Project>
+      <Name>ControlDeRiesgoFinanciero.AccesoADatos</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

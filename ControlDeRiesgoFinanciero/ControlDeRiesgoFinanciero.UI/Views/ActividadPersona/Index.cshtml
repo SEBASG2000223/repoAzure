@@ -1,0 +1,74 @@
+﻿@model IEnumerable<ControlDeRiesgoFinanciero.Abstracciones.Modelos.ActividadPersona.ActividadPersonaDto>
+
+@{
+    ViewBag.Title = "Index";
+    var mensajeAlerta = TempData["Alerta"] as string;
+}
+<input type="hidden" id="mensajeAlerta" value="@mensajeAlerta" />
+<br />
+<h2 class="text-center">Listar Personas</h2>
+<br />
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+
+        <th>
+            @Html.DisplayNameFor(model => model.NombreActividadFinanciera)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NivelDeRiesgo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FechaDeRegistro)
+        </th>
+
+
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NombreActividadFinanciera)
+            </td>
+            <td>
+                @{
+                    var nivelRiesgo = "";
+                    if (item.NivelDeRiesgo == 1)
+                    {
+                        nivelRiesgo = "Bajo";
+                    }
+                    else if (item.NivelDeRiesgo == 2)
+                    {
+                        nivelRiesgo = "Medio";
+                    }
+                    else if (item.NivelDeRiesgo == 3)
+                    {
+                        nivelRiesgo = "Alto";
+                    }
+
+                }
+                @nivelRiesgo
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaDeRegistro)
+            </td>
+            <td>
+                @Html.ActionLink("Delete", "Edit", new { id = item.IdActividadPersona }) |
+
+            </td>
+        </tr>
+
+    }
+
+</table>
+}
+@section scripts {
+    <script src="~/Scripts/ScriptsFront/Personas/ListaDataTablePersonas.js"></script>
+    <script src="~/Scripts/ScriptsFront/Alertas/alerta.js"></script>
+}

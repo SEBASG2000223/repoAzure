@@ -1,0 +1,43 @@
+﻿@model IEnumerable<ControlDeRiesgoFinanciero.Abstracciones.Modelos.BitacoraEventos.BitacoraEventosDto>
+
+@{
+    ViewBag.Title = "Index";
+}
+<br />
+<h2 class="text-center">Bitácora de Eventos</h2>
+<br />
+<div class="table-responsive">
+    <table id="myTable" class="table table-bordered table-hover">
+        <thead class="table-dark">
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.IdEvento)</th>
+                <th>@Html.DisplayNameFor(model => model.TablaDeEvento)</th>
+                <th>@Html.DisplayNameFor(model => model.TipoDeEvento)</th>
+                <th>@Html.DisplayNameFor(model => model.FechaDeEvento)</th>
+                <th>@Html.DisplayNameFor(model => model.DescripcionDeEvento)</th>
+                <th>@Html.DisplayNameFor(model => model.StackTrace)</th>
+                <th>@Html.DisplayNameFor(model => model.DatosAnteriores)</th>
+                <th>@Html.DisplayNameFor(model => model.DatosPosteriores)</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.IdEvento)</td>
+                    <td>@Html.DisplayFor(modelItem => item.TablaDeEvento)</td>
+                    <td>@Html.DisplayFor(modelItem => item.TipoDeEvento)</td>
+                    <td>@Html.DisplayFor(modelItem => item.FechaDeEvento)</td>
+                    <td>@Html.DisplayFor(modelItem => item.DescripcionDeEvento)</td>
+                    <td>@Html.DisplayFor(modelItem => item.StackTrace)</td>
+                    <td>@Html.Raw(item.DatosAnteriores.Replace("\n", "<br>"))</td>
+                    <td>@Html.Raw(item.DatosPosteriores.Replace("\n", "<br>"))</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+@section scripts {
+    <script src="~/Scripts/ScriptsFront/Bitacora/ListaDataTableBitacora.js"></script>
+}

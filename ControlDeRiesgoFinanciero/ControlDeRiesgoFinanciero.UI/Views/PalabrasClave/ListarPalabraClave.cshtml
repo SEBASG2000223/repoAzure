@@ -1,0 +1,86 @@
+﻿@model IEnumerable<ControlDeRiesgoFinanciero.Abstracciones.Modelos.PalabrasClave.PalabrasClaveDto>
+
+@{
+    ViewBag.Title = "ListarPalabraClave";
+    var mensajeAlerta = TempData["Alerta"] as string;
+}
+<input type="hidden" id="mensajeAlerta" value="@mensajeAlerta" />
+<br />
+<h2 class="text-center">Listar Palabra Clave</h2>
+<br />
+<p>
+    
+    <a href="@Url.Action("RegistrarPalabraClave")" class="btn btn-dark btn-md">
+        Registrar Palabra Clave
+    </a>
+</p>
+<div class="table-responsive">
+    <table id="myTable" class="table table-bordered table-hover">
+        <thead class="table-dark">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Palabra)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Orden)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FechaDeRegistro)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FechaDeModificacion)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Estado)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Palabra)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Orden)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FechaDeRegistro)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FechaDeModificacion)
+                    </td>
+                    <td>
+                        @SaberEstado(item.Estado)
+                    </td>
+                    <td>
+                        <a href="@Url.Action("EditarPalabraClave", "PalabrasClave", new { id = item.IdPalabra })" class="btn btn-primary btn-sm">
+                            Editar
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+
+    </table>
+</div>
+
+@functions{
+
+    public string SaberEstado(bool estado)
+    {
+        if (estado == false) return "Inactivo";
+        if (estado == true) return "Activo";
+        return "Estado invalido";
+    }
+
+}
+
+@section scripts {
+
+    <script src="~/Scripts/ScriptsFront/PalabrasClave/ListaDataTablePalabrasClave.js"></script>
+    <script src="~/Scripts/ScriptsFront/Alertas/alerta.js"></script>
+}
+

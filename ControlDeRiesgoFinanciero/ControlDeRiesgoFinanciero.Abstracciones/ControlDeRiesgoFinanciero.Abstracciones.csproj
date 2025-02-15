@@ -1,0 +1,136 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{8892645E-4256-4D4F-BBD8-DA2DFF35E0E4}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ControlDeRiesgoFinanciero.Abstracciones</RootNamespace>
+    <AssemblyName>ControlDeRiesgoFinanciero.Abstracciones</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AccesoADatos\Interfaces\ActividadFinanciera\CambiarEstado\ICambiarEstadoAD.cs" />
+    <Compile Include="AccesoADatos\Interfaces\ActividadFinanciera\Editar\IEditarActividadFinancieraAD.cs" />
+    <Compile Include="AccesoADatos\Interfaces\ActividadFinanciera\Listar\IListarActividadFinancieraAD.cs" />
+    <Compile Include="AccesoADatos\Interfaces\ActividadFinanciera\ObtenerPorId\IObtenerActividadFinancieraPorID.cs" />
+    <Compile Include="AccesoADatos\Interfaces\ActividadFinanciera\Registrar\IRegistrarActividadFinancieraAD.cs" />
+    <Compile Include="AccesoADatos\Interfaces\ActividadPersona\Actualizar\IActualizarActividadPersonaAD.cs" />
+    <Compile Include="AccesoADatos\Interfaces\ActividadPersona\Eliminar\IEliminarActividadPersonaAD.cs" />
+    <Compile Include="AccesoADatos\Interfaces\ActividadPersona\ListarActividadesNoRegistradas\IListarActividadesNoRegistradasAD.cs" />
+    <Compile Include="AccesoADatos\Interfaces\ActividadPersona\ListarPersonas\IListarPersonasPorIdAD.cs" />
+    <Compile Include="AccesoADatos\Interfaces\ActividadPersona\Listar\IListarActividadPersonaAD.cs" />
+    <Compile Include="AccesoADatos\Interfaces\ActividadPersona\ObtenerPorId\IObtenerActividadPersonaPorIdAD.cs" />
+    <Compile Include="AccesoADatos\Interfaces\ActividadPersona\Registrar\IRegistrarActividadPersonaAD.cs" />
+    <Compile Include="AccesoADatos\Interfaces\AnalizarPersona\IRegistrarAnalisisAD.cs" />
+    <Compile Include="AccesoADatos\Interfaces\AnalizarPersona\ListarPorId\IListarPorIdAD.cs" />
+    <Compile Include="AccesoADatos\Interfaces\AnalizarPersona\Listar\IListarAnalisisPersonaAD.cs" />
+    <Compile Include="AccesoADatos\Interfaces\ArchivoAnalisis\Detalles\IDetallesArchivoAnalisisAD.cs" />
+    <Compile Include="AccesoADatos\Interfaces\ArchivoAnalisis\Listar\IListarArchivoAnalisisAD.cs" />
+    <Compile Include="AccesoADatos\Interfaces\ArchivoAnalisis\ObtenerPorId\IObtenerArchivoAnalisisPorIdAD.cs" />
+    <Compile Include="AccesoADatos\Interfaces\ArchivoAnalisis\Registrar\IRegistrarArchivoAnalisisAD.cs" />
+    <Compile Include="AccesoADatos\Interfaces\BitacoraEventos\Registrar\IRegistrarBitacoraEventosAD.cs" />
+    <Compile Include="AccesoADatos\Interfaces\BitacoraEventos\Listar\IListarBitacoraEventosAD.cs" />
+    <Compile Include="AccesoADatos\Interfaces\BitacoraEventos\ObtenerPorId\IObtenerBitacoraEventosPorIdAD.cs" />
+    <Compile Include="AccesoADatos\Interfaces\PalabrasClave\Editar\IEditarPalabraClaveAD.cs" />
+    <Compile Include="AccesoADatos\Interfaces\PalabrasClave\Listar\IListarPalabraClaveAD.cs" />
+    <Compile Include="AccesoADatos\Interfaces\PalabrasClave\ObtenerPorId\IObtenerPalabraClavePorIdAD.cs" />
+    <Compile Include="AccesoADatos\Interfaces\PalabrasClave\Registrar\IRegistrarPalabraClaveAD.cs" />
+    <Compile Include="AccesoADatos\Interfaces\Personas\CambiarEstado\ICambiarEstadoPersonasAD.cs" />
+    <Compile Include="AccesoADatos\Interfaces\Personas\Editar\IEditarPersonasAD.cs" />
+    <Compile Include="AccesoADatos\Interfaces\Personas\Listar\IListarPersonasAD.cs" />
+    <Compile Include="AccesoADatos\Interfaces\Personas\ObtenerPorId\IObtenerPersonasPorIdAD.cs" />
+    <Compile Include="AccesoADatos\Interfaces\Personas\Registrar\IRegistrarPersonasAD.cs" />
+    <Compile Include="LN\Interfaces\ActividadFinanciera\Editar\IEditarActividadFinancieraLN.cs" />
+    <Compile Include="LN\Interfaces\ActividadFinanciera\Listar\IListarActividadFinancieraLN.cs" />
+    <Compile Include="LN\Interfaces\ActividadFinanciera\ObtenerPorId\IObtenerActividadFinancieraPorIdLN.cs" />
+    <Compile Include="LN\Interfaces\ActividadFinanciera\Registrar\IRegistrarActividadFinancieraLN.cs" />
+    <Compile Include="LN\Interfaces\ActividadPersona\Actualizar\IActualizarActividadPersonaLN.cs" />
+    <Compile Include="LN\Interfaces\ActividadPersona\Eliminar\IEliminarActividadPersonaLN.cs" />
+    <Compile Include="LN\Interfaces\ActividadPersona\ListarActividadesNoRegistradas\IListarActividadesNoRegistradasLN.cs" />
+    <Compile Include="LN\Interfaces\ActividadPersona\ListarPersonas\IListarPersonasPorIdLN.cs" />
+    <Compile Include="LN\Interfaces\ActividadPersona\Listar\IListarActividadPersonaLN.cs" />
+    <Compile Include="LN\Interfaces\ActividadPersona\ObtenerPorId\IObtenerActividadPersonaPorIdLN.cs" />
+    <Compile Include="LN\Interfaces\ActividadPersona\Registrar\IRegistrarActividadPersonaLN.cs" />
+    <Compile Include="LN\Interfaces\AnalizarPersona\Analizar\IAnalizarPersonaLN.cs" />
+    <Compile Include="LN\Interfaces\AnalizarPersona\ListarPorId\IListarPorIdLN.cs" />
+    <Compile Include="LN\Interfaces\AnalizarPersona\Listar\IListarAnalisisPersonaLN.cs" />
+    <Compile Include="LN\Interfaces\AnalizarPersona\Registrar\IRegistrarAnalisisLN.cs" />
+    <Compile Include="LN\Interfaces\ArchivoAnalisis\Detalles\IDetallesArchivoAnalisisLN.cs" />
+    <Compile Include="LN\Interfaces\ArchivoAnalisis\Listar\IListarArchivoAnalisisLN.cs" />
+    <Compile Include="LN\Interfaces\ArchivoAnalisis\ObtenerPorId\IObtenerArchivoAnalisisPorIdLN.cs" />
+    <Compile Include="LN\Interfaces\ArchivoAnalisis\Registrar\IRegistrarArchivoAnalisisLN.cs" />
+    <Compile Include="LN\Interfaces\BitacoraEventos\Registrar\IRegistrarBitacoraEventosLN.cs" />
+    <Compile Include="LN\Interfaces\BitacoraEventos\Listar\IListarBitacoraEventosLN.cs" />
+    <Compile Include="LN\Interfaces\BitacoraEventos\ObtenerPorId\IObtenerBitacoraEventosLN.cs" />
+    <Compile Include="LN\Interfaces\ActividadFinanciera\CambiarEstado\ICambiarEstadoLN.cs" />
+    <Compile Include="LN\Interfaces\General\Conversiones\ActividadFinanciera\IConvertirActividadDtoAlActividadTabla.cs" />
+    <Compile Include="LN\Interfaces\General\Conversiones\ActividadPersona\IConvertirActividadPersonaDtoAActividadPersonaTabla.cs" />
+    <Compile Include="LN\Interfaces\General\Conversiones\ArchivoAnalisis\IConvertirArchivoAnalisisDtoAArchivoAnalisisTabla.cs" />
+    <Compile Include="LN\Interfaces\General\Conversiones\BitacoraEventos\IConvertirBitacoraDtoABitacoraTabla.cs" />
+    <Compile Include="LN\Interfaces\General\Conversiones\PalabrasClave\IConvertirAPalabrasClaveDto.cs" />
+    <Compile Include="LN\Interfaces\General\Conversiones\PalabrasClave\IConvertirAPalabrasClaveTabla.cs" />
+    <Compile Include="LN\Interfaces\General\Conversiones\Personas\IConvertirAPersonasDto.cs" />
+    <Compile Include="LN\Interfaces\General\Conversiones\Personas\IConvertirAPersonasTabla.cs" />
+    <Compile Include="LN\Interfaces\General\IFecha.cs" />
+    <Compile Include="LN\Interfaces\PalabrasClave\Editar\IEditarPalabraClaveLN.cs" />
+    <Compile Include="LN\Interfaces\PalabrasClave\Listar\IListarPalabraClaveLN.cs" />
+    <Compile Include="LN\Interfaces\PalabrasClave\ObtenerPorId\IObtenerPalabraClavePorIdLN.cs" />
+    <Compile Include="LN\Interfaces\PalabrasClave\Registrar\IRegistrarPalabraClaveLN.cs" />
+    <Compile Include="LN\Interfaces\Personas\CambiarEstado\ICambiarEstadoPersonasLN.cs" />
+    <Compile Include="LN\Interfaces\Personas\Editar\IEditarPersonasLN.cs" />
+    <Compile Include="LN\Interfaces\Personas\Listar\IListarPersonasLN.cs" />
+    <Compile Include="LN\Interfaces\Personas\ObtenerPorId\IObtenerPersonasPorIdLN.cs" />
+    <Compile Include="LN\Interfaces\Personas\Registrar\IRegistrarPersonasLN.cs" />
+    <Compile Include="ModelosDeBaseDeDatos\ActividadFinancieraTabla.cs" />
+    <Compile Include="ModelosDeBaseDeDatos\ActividadPersonaTabla.cs" />
+    <Compile Include="ModelosDeBaseDeDatos\AnalizarPersonaTabla.cs" />
+    <Compile Include="ModelosDeBaseDeDatos\ArchivoAnalisisTabla.cs" />
+    <Compile Include="ModelosDeBaseDeDatos\BitacoraEventosTabla.cs" />
+    <Compile Include="ModelosDeBaseDeDatos\PalabrasClaveTabla.cs" />
+    <Compile Include="ModelosDeBaseDeDatos\PersonasTabla.cs" />
+    <Compile Include="Modelos\ActividadFinanciera\ActividadFinancieraDto.cs" />
+    <Compile Include="Modelos\ActividadPersona\ActividadPersonaDto.cs" />
+    <Compile Include="Modelos\AnalizarPersona\AnalizarPersonaDto.cs" />
+    <Compile Include="Modelos\AnalizarPersona\ListarAnalisisPersonaDto.cs" />
+    <Compile Include="Modelos\ArchivoAnalisis\ArchivoAnalisisDto.cs" />
+    <Compile Include="Modelos\BitacoraEventos\BitacoraEventosDto.cs" />
+    <Compile Include="Modelos\PalabrasClave\PalabrasClaveDto.cs" />
+    <Compile Include="Modelos\Personas\PersonasDto.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

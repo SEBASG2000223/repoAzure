@@ -1,0 +1,62 @@
+﻿@model IEnumerable<ControlDeRiesgoFinanciero.Abstracciones.Modelos.ActividadPersona.ActividadPersonaDto>
+@{
+
+    var mensajeAlerta = TempData["Alerta"] as string;
+}
+
+<input type="hidden" id="mensajeAlerta" value="@mensajeAlerta" />
+<br />
+<h2 class="text-center">Listar Personas</h2>
+<br />
+
+<p>
+    <a href="@Url.Action("Create", new { idPersona = ViewBag.IdPersona })" class="btn btn-dark">Crear nueva actividad financiera</a>
+
+</p>
+<br />
+<div class="table-responsive">
+    <table id="myTable" class="table table-bordered table-hover">
+        <thead class="table-dark">
+            <tr>
+                <th>Nombre de la Actividad</th>
+                <th>Nivel de Riesgo</th>
+                <th>Fecha de Registro</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var actividad in Model)
+            {
+                <tr>
+                    <td>@actividad.NombreActividadFinanciera</td>
+                    <td>
+                        @if (actividad.NivelDeRiesgo == 1)
+                        {
+                            @:Bajo
+                        }
+                        else if (actividad.NivelDeRiesgo == 2)
+                        {
+                            @:Medio
+                        }
+                        else
+                        {
+                            @:Alto
+                        }
+                    </td>
+                    <td>@actividad.FechaDeRegistro</td>
+                    <td>
+
+                        <a href="@Url.Action("Edit", "ActividadPersona", new { id = actividad.IdActividadPersona })" class="btn btn-danger btn-sm">
+                            Eliminar
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+    @section scripts {
+        <script src="~/Scripts/ScriptsFront/ArchivoAnalisis/ListaDataTableArchivoAnalisis.js"></script>
+
+        <script src="~/Scripts/ScriptsFront/Alertas/alerta.js"></script>
+    }

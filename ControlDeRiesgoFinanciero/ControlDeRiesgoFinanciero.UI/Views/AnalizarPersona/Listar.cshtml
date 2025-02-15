@@ -1,0 +1,102 @@
+﻿@model IEnumerable<ControlDeRiesgoFinanciero.Abstracciones.Modelos.AnalizarPersona.ListarAnalisisPersonaDto>
+
+@{
+    ViewBag.Title = "Listar";
+}
+<br />
+<h2 class="text-center">Listado de personas analizadas</h2>
+
+<br />
+<div class="table-responsive">
+    <table id="myTable" class="table table-bordered table-hover">
+        <thead class="table-dark">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.TipoIdentificacion)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.NombrePersona)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PrimerApellidoPersona)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.SegundoApellidoPersona)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.NivelDeRiesgo)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FechaUltimoAnalisis)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+
+                    <td>
+                        @{
+                            string tipoIdentificacion = item.TipoIdentificacion == 1 ? "Física" : item.TipoIdentificacion == 2 ? "Jurídica" : "N/A";
+                        }
+                        @tipoIdentificacion
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NombrePersona)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PrimerApellidoPersona)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SegundoApellidoPersona)
+                    </td>
+                    @{
+                        var nivelRiesgo = "";
+                        if (item.NivelDeRiesgo == 0)
+                        {
+                            nivelRiesgo = "Sin Análisis";
+                        }
+                        else if (item.NivelDeRiesgo == 1)
+                        {
+
+                            nivelRiesgo = "Riesgo Bajo";
+                        }
+                        else if (item.NivelDeRiesgo == 2)
+                        {
+
+                            nivelRiesgo = "Riesgo Medio";
+                        }
+
+                        else if (item.NivelDeRiesgo == 3)
+                        {
+
+                            nivelRiesgo = "Riesgo Alto";
+                        }
+
+                        else
+                        {
+                            nivelRiesgo = "Riesgo Critico";
+                        }
+                    }
+                    <td>
+                        @nivelRiesgo
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FechaUltimoAnalisis)
+                    </td>
+                    <td>
+                        <a href="@Url.Action("ListarPorId", "AnalizarPersona", new { idPersona = item.IdPersona }, null)" class="btn btn-secondary btn-sm" style="white-space: nowrap;">
+                            Ver todos los análisis
+                        </a>
+
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+@section scripts {
+    <script src="~/Scripts/ScriptsFront/AnalizarPersona/ListaDataTableAnalizarPersona.js"></script>
+}

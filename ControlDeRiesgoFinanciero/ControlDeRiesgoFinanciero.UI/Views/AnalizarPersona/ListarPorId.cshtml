@@ -1,0 +1,93 @@
+﻿@model IEnumerable<ControlDeRiesgoFinanciero.Abstracciones.Modelos.AnalizarPersona.AnalizarPersonaDto>
+
+@{
+    ViewBag.Title = "Analisis por persona";
+}
+<br />
+<h2 class="text-center">Analisis por persona</h2>
+
+<br />
+<div class="table-responsive">
+    <table id="myTable" class="table table-bordered table-hover">
+        <thead class="table-dark">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.NivelDeRiesgoGenerado)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TotalDePalabrasClaveEncontradas)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CanitdadDeArchivosEmparejados)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FechaDeAnalisis)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Comentario)
+                </th>
+               
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    @{
+                        var nivelRiesgo = "";
+                        if (item.NivelDeRiesgoGenerado == 0)
+                        {
+                            nivelRiesgo = "Sin Análisis";
+                        }
+                        else if (item.NivelDeRiesgoGenerado == 1)
+                        {
+
+                            nivelRiesgo = "Riesgo Bajo";
+                        }
+                        else if (item.NivelDeRiesgoGenerado == 2)
+                        {
+
+                            nivelRiesgo = "Riesgo Medio";
+                        }
+
+                        else if (item.NivelDeRiesgoGenerado == 3)
+                        {
+
+                            nivelRiesgo = "Riesgo Alto";
+                        }
+
+                        else
+                        {
+                            nivelRiesgo = "Riesgo Critico";
+                        }
+                    }
+                    <td>
+                        @Html.DisplayFor(modelItem => nivelRiesgo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TotalDePalabrasClaveEncontradas)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CanitdadDeArchivosEmparejados)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FechaDeAnalisis)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Comentario)
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<br />
+<div>
+    <a href="@Request.UrlReferrer" class="btn btn-secondary btn-md">Volver a la lista</a>
+</div>
+
+
+@section scripts {
+
+    <script src="~/Scripts/ScriptsFront/ArchivoAnalisis/ListaDataTableArchivoAnalisis.js"></script>
+}

@@ -1,0 +1,166 @@
+﻿@model IEnumerable<ControlDeRiesgoFinanciero.Abstracciones.Modelos.Personas.PersonasDto>
+
+@{
+    ViewBag.Title = "Listar Personas";
+    var mensajeAlerta = TempData["Alerta"] as string;
+}
+<input type="hidden" id="mensajeAlerta" value="@mensajeAlerta" />
+<br />
+<h2 class="text-center">Listar Personas</h2>
+<br />
+<p>
+   
+    <a href="@Url.Action("RegistrarPersonas")" class="btn btn-dark btn-md">
+        Registrar Persona
+    </a>
+</p>
+<div class="table-responsive">
+    <table id="myTable" class="table table-bordered table-hover">
+        <thead class="table-dark">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.IdentificacionPersona)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TipoIdentificacion)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.NombrePersona)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PrimerApellidoPersona)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.SegundoApellidoPersona)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.EstadoDeRiesgo)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Estado)
+                </th>
+                <th>
+                    Acciones
+                </th>
+
+
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IdentificacionPersona)
+                    </td>
+                    <td>
+                        @SaberTipoIdentificacion(item.TipoIdentificacion)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NombrePersona)
+                    </td>
+
+                    @if (item.TipoIdentificacion != 2)
+                    {
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PrimerApellidoPersona)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.SegundoApellidoPersona)
+                        </td>
+                    }
+                    else
+                    {
+                        <td> </td>
+                        <td>
+                        </td>
+                    }
+                    <td>
+                        @SaberEstadoRiesgo(item.EstadoDeRiesgo)
+                    </td>
+                    <td>
+                        @SaberEstado(item.Estado)
+                    </td>
+
+                    <td>
+                        <div class="d-flex gap-2">
+                            <a href="@Url.Action("EditarPersonas", "Personas", new { id = item.IdPersona })" class="btn btn-primary btn-sm">
+                                Editar
+                            </a>
+                            <a href="@Url.Action("DetallesPersona", "Personas", new { id = item.IdPersona })" class="btn btn-secondary btn-sm">
+                                Detalles
+                            </a>
+                            <a href="@Url.Action("Actividades", "ActividadPersona", new { idPersona = item.IdPersona })" class="btn btn-info btn-sm text-nowrap">
+                                Ver Actividades
+                            </a>
+                            @if (item.Estado == true)
+                            {
+                                <a href="@Url.Action("Inactivar", "Personas", new { id = item.IdPersona })" class="btn btn-danger btn-sm">
+                                    Inactivar
+                                </a>
+                            }
+                            @if (item.Estado == false)
+                            {
+                                <a href="@Url.Action("Activar", "Personas", new { id = item.IdPersona })" class="btn btn-success btn-sm">
+                                    Activar
+                                </a>
+                            }
+                            @if (item.Estado == true)
+                            {
+                                <a href="@Url.Action("Analizar", "AnalizarPersona", new { idPersona = item.IdPersona })" class="btn btn-warning btn-sm">
+                                    Analizar
+                                </a>
+                            }
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+@functions{
+    public string SaberEstadoRiesgo(int estado)
+    {
+        switch (estado)
+        {
+            case 0:
+                return "Sin análisis";
+            case 1:
+                return "Bajo";
+            case 2:
+                return "Medio";
+            case 3:
+                return "Alto";
+            case 4:
+                return "Crítico";
+            default:
+                return "Estado de riesgo inválido";
+        }
+    }
+
+
+    public string SaberTipoIdentificacion(int tipo)
+    {
+        switch (tipo)
+        {
+            case 1:
+                return "Física";
+            case 2:
+                return "Jurídica";
+            default:
+                return "Tipo de identificación inválida";
+        }
+    }
+
+    public string SaberEstado(bool estado)
+    {
+        if (estado == false) return "Inactivo";
+        if (estado == true) return "Activo";
+        return "Estado invalido";
+    }
+}
+@section scripts {
+    <script src="~/Scripts/ScriptsFront/Personas/ListaDataTablePersonas.js"></script>
+    <script src="~/Scripts/ScriptsFront/Alertas/alerta.js"></script>
+}

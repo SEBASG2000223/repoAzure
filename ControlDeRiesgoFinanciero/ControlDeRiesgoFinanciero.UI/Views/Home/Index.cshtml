@@ -1,0 +1,102 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+<main>
+    <section class="text-center py-5" style="background-color: #25282B; color: white;">
+        <div class="container">
+            <h1 class="display-4 fw-bold">Bienvenido al Sistema de Gestión Financiera</h1>
+            <p class="lead mt-3">
+                Administra actividades financieras, analiza posibles riesgos, y contribuye a la prevención de lavado de activos y financiamiento del terrorismo.
+            </p>
+            <a href="#modulos" class="btn btn-light btn-lg mt-4">Explorar Módulos &raquo;</a>
+        </div>
+    </section>
+
+
+    <section id="acerca" class="py-5">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <img src="https://www.ceupe.com/images/easyblog_articles/2361/b2ap3_amp_funciones-de-gestin-financiera.jpg" alt="Gestión Financiera" class="img-fluid rounded shadow">
+                </div>
+                <div class="col-lg-6">
+                    <h2 class="fw-bold">Acerca del Sistema</h2>
+                    <p class="text-muted">
+                        Este sistema está diseñado para fortalecer los esfuerzos en la prevención de lavado de activos y financiamiento del terrorismo (LAFT).
+                        Permite analizar datos relevantes, gestionar actividades y detectar posibles riesgos en operaciones financieras.
+                    </p>
+                    <ul class="list-unstyled">
+                        <li><i class="bi bi-check-circle-fill text-success me-2"></i> Gestión de personas vinculadas a actividades financieras</li>
+                        <li><i class="bi bi-check-circle-fill text-success me-2"></i> Análisis de noticias y documentos relacionados con riesgos</li>
+                        <li><i class="bi bi-check-circle-fill text-success me-2"></i> Prevención de actividades sospechosas según normativa</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="modulos" class="py-5 bg-light">
+        <div class="container text-center">
+            <h2 class="fw-bold mb-5">Módulos Principales</h2>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-3">
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            <i class="bi bi-people-fill text-primary display-4"></i>
+                            <h5 class="card-title mt-3">Gestión de Personas</h5>
+                            <p class="card-text text-muted">
+                                Gestiona clientes asociados a actividades financieras y valida antecedentes según la normativa.
+                            </p>
+                            <a href="@Url.Action("ListarPersonas", "Personas")" class="btn btn-outline-primary">Ir al módulo</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            <i class="bi bi-journal-text text-primary display-4"></i>
+                            <h5 class="card-title mt-3">Actividades Financieras</h5>
+                            <p class="card-text text-muted">
+                                Registra y supervisa actividades financieras, asegurando el cumplimiento de normativas LAFT.
+                            </p>
+                            <a href="@Url.Action("Index", "ActividadFinanciera")" class="btn btn-outline-primary">Ir al módulo</a>
+                        </div>
+                    </div>
+                </div>
+               
+                <div class="col-md-6 col-lg-3">
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            <i class="bi bi-folder-fill text-primary display-4"></i>
+                            <h5 class="card-title mt-3">Archivos de Análisis</h5>
+                            <p class="card-text text-muted">
+                                Administra y analiza documentos clave relacionados con posibles casos de riesgo.
+                            </p>
+                            <a href="@Url.Action("Listar", "ArchivoAnalisis")" class="btn btn-outline-primary">Ir al módulo</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            <i class="bi bi-folder-fill text-primary display-4"></i>
+                            <h5 class="card-title mt-3">Palabras Clave</h5>
+                            <p class="card-text text-muted">
+                                Define palabras clave críticas para identificar riesgos en documentos y análisis.
+                            </p>
+                            <a href="@Url.Action("ListarPalabraClave", "PalabrasClave")" class="btn btn-outline-primary">Ir al módulo</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-5 bg-dark text-white">
+        <div class="container text-center">
+            <h3 class="fw-bold">Fortalece la prevención de riesgos financieros</h3>
+            <p class="mt-3">Utiliza herramientas avanzadas para cumplir con las normativas LAFT y proteger tu organización.</p>
+         
+        </div>
+    </section>
+</main>

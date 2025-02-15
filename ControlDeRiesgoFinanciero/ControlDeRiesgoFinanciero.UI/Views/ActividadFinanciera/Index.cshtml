@@ -1,0 +1,115 @@
+﻿@model IEnumerable<ControlDeRiesgoFinanciero.Abstracciones.Modelos.ActividadFinanciera.ActividadFinancieraDto>
+
+@{
+    ViewBag.Title = "Actividades Financieras";
+    var mensajeAlerta = TempData["Alerta"] as string;
+}
+<input type="hidden" id="mensajeAlerta" value="@mensajeAlerta" />
+<br />
+<h2 class="text-center">Actividades Financieras</h2>
+<br />
+
+<p>
+    <a href="@Url.Action("Create")" class="btn btn-dark btn-md">Registrar Actividad Financiera</a>
+</p>
+<div class="table-responsive">
+    <table id="myTable" class="table table-bordered table-hover">
+        <thead class="table-dark">
+            <tr>
+                <th class="text-center">
+                    @Html.DisplayNameFor(model => model.NombreActividadFinanciera)
+                </th>
+                <th class="text-center">
+                    @Html.DisplayNameFor(model => model.DescripcionActividadFinanciera)
+                </th>
+                <th class="text-center">
+                    @Html.DisplayNameFor(model => model.NivelDeRiesgo)
+                </th>
+                <th class="text-center">
+                    @Html.DisplayNameFor(model => model.FechaDeRegistro)
+                </th>
+                <th class="text-center">
+                    @Html.DisplayNameFor(model => model.Estado)
+                </th>
+                <th>Acciones</th>
+
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td class="text-center">
+                        @Html.DisplayFor(modelItem => item.NombreActividadFinanciera)
+                    </td>
+                    <td class="text-center">
+                        @Html.DisplayFor(modelItem => item.DescripcionActividadFinanciera)
+                    </td>
+                    @{
+                        var nivelRiesgo = "";
+                        if (item.NivelDeRiesgo == 1)
+                        {
+                            nivelRiesgo = "Bajo";
+                        }
+                        else if (item.NivelDeRiesgo == 2)
+                        {
+
+                            nivelRiesgo = "Medio";
+                        }
+
+                        else
+                        {
+                            nivelRiesgo = "Alto";
+                        }
+                    }
+                    <td class="text-center">
+                        @Html.DisplayFor(modelItem => nivelRiesgo)
+                    </td>
+                    <td class="text-center">
+                        @Html.DisplayFor(modelItem => item.FechaDeRegistro)
+                    </td>
+                    @{
+                        var estado = "";
+                        if (item.Estado == true)
+                        {
+                            estado = "Activo";
+                        }
+
+                        else
+                        {
+                            estado = "Inactivo";
+                        }
+                    }
+                    <td class="text-center">@estado</td>
+                    <td>
+                        <div class="d-flex gap-2">
+                            <a href="@Url.Action("Edit", "ActividadFinanciera", new { id = item.IdActividadFinanciera })" class="btn btn-primary btn-sm">
+                                Editar
+                            </a>
+                            @if (item.Estado == false)
+                            {
+                                <a href="@Url.Action("Activar", "ActividadFinanciera", new { id = item.IdActividadFinanciera })" class="btn btn-success btn-sm">
+                                    Activar
+                                </a>
+                            }
+                            @if (item.Estado == true)
+                            {
+                                <a href="@Url.Action("Inactivar", "ActividadFinanciera", new { id = item.IdActividadFinanciera })" class="btn btn-danger btn-sm">
+                                    Inactivar
+                                </a>
+                            }
+                        </div>
+                    </td>
+
+
+                </tr>
+            }
+        </tbody>
+
+    </table>
+</div>
+@section scripts {
+    <script src="~/Scripts/ScriptsFront/ActividadesFinancieras/ListaDataTableActividadesFinancieras.js"></script>
+    <script src="~/Scripts/ScriptsFront/Alertas/alerta.js"></script>
+}

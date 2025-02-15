@@ -1,0 +1,71 @@
+﻿@model IEnumerable<ControlDeRiesgoFinanciero.Abstracciones.Modelos.ArchivoAnalisis.ArchivoAnalisisDto>
+
+@{
+    ViewBag.Title = "Archivos de Analisis";
+    var mensajeAlerta = TempData["Alerta"] as string;
+}
+<input type="hidden" id="mensajeAlerta" value="@mensajeAlerta" />
+<br />
+<h2 class="text-center">Archivos de Analisis</h2>
+<br />
+<p>
+    <a href="@Url.Action("Create")" class="btn btn-dark btn-md">
+        Registrar Archivo de Analisis
+    </a>
+</p>  
+<div class="table-responsive">
+    <table id="myTable" class="table table-bordered table-hover">
+        <thead class="table-dark">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Nombre)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TextoDelArchivo)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Fuente)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FechaDeRegistro)
+                </th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nombre)
+                    </td>
+                    <td>
+                        @((item.TextoDelArchivo?.Length > 10)
+                ? item.TextoDelArchivo.Substring(0, 10) + "..."
+                : item.TextoDelArchivo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Fuente)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FechaDeRegistro)
+                    </td>
+                    <td>
+                  
+                        <a href="@Url.Action("Detalles", "ArchivoAnalisis", new { id = item.IdArchivo })" class="btn btn-secondary btn-sm">
+                            Detalles
+                        </a>
+                    </td>
+
+                </tr>
+            }
+        </tbody>
+
+    </table>
+</div>
+@section scripts {
+
+    <script src="~/Scripts/ScriptsFront/ArchivoAnalisis/ListaDataTableArchivoAnalisis.js"></script>
+    <script src="~/Scripts/ScriptsFront/Alertas/alerta.js"></script>
+}

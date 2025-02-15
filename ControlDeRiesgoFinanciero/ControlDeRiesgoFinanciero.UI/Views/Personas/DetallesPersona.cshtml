@@ -1,0 +1,143 @@
+﻿@model ControlDeRiesgoFinanciero.Abstracciones.Modelos.Personas.PersonasDto
+
+@{
+    ViewBag.Title = "Detalles Persona";
+}
+
+<h2>Detalles Persona</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.IdentificacionPersona)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.IdentificacionPersona)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TipoIdentificacion)
+        </dt>
+        <dd>
+            @SaberTipoIdentificacion(Model.TipoIdentificacion)  
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NombrePersona)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NombrePersona)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PrimerApellidoPersona)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.PrimerApellidoPersona)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SegundoApellidoPersona)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.SegundoApellidoPersona)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Telefono)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Telefono)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CorreoElectronico)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CorreoElectronico)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Direccion)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Direccion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EstadoDeRiesgo)
+        </dt>
+        <dd>
+            @SaberEstadoRiesgo(Model.EstadoDeRiesgo) 
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaDeRegistro)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.FechaDeRegistro)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaDeModificacion)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.FechaDeModificacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Estado)
+        </dt>
+        <dd>
+            @SaberEstado(Model.Estado) 
+        </dd>
+
+    </dl>
+</div>
+
+<div>
+    <a href="@Request.UrlReferrer" class="btn btn-secondary btn-md">Volver a la lista</a>
+</div>
+
+@functions{
+    public string SaberEstadoRiesgo(int estado)
+    {
+        switch (estado)
+        {
+            case 0:
+                return "Sin análisis";
+            case 1:
+                return "Bajo";
+            case 2:
+                return "Medio";
+            case 3:
+                return "Alto";
+            case 4:
+                return "Crítico";
+            default:
+                return "Estado de riesgo inválido";
+        }
+    }
+
+    public string SaberTipoIdentificacion(int tipo)
+    {
+        switch (tipo)
+        {
+            case 1:
+                return "Física";
+            case 2:
+                return "Jurídica";
+            default:
+                return "Tipo de identificación inválida";
+        }
+    }
+
+    public string SaberEstado(bool estado)
+    {
+        if (estado == false) return "Inactivo";
+        if (estado == true) return "Activo";
+        return "Estado inválido";
+    }
+}
+
